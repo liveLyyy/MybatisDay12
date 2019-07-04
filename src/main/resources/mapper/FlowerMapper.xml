@@ -11,4 +11,12 @@
     <select id="findAll" resultType="com.liyan.pojo.Flower">
         select * from flower
     </select>
+
+    <select id="findById" resultType="int">
+        select count(*) from flower
+    </select>
+
+    <select id="c" resultType="com.liyan.pojo.Flower">
+        select * from flower
+    </select>
 </mapper>

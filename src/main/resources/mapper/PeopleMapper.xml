@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:可以理解成实现了的全路径（包名+类名）-->
+<mapper namespace="mapper.PeopleMapper">
+    <!--id:方法名
+    parameterType:定义参数类型
+       resultType:返回值类型
+
+       如果方法返回值是list，在resultType中写list的泛型，因为mybatis对jdbc的封装需要一行一行的读取数据
+    -->
+    <select id="findAll" resultType="com.liyan.pojo.People">
+        select * from people
+    </select>
+
+</mapper>
