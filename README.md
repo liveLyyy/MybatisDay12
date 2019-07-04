@@ -60,6 +60,5 @@
        Map<Object, Object> map = sqlSession.selectMap("a.b.c", "name");
         System.out.println(map);
 ```
-Log4j
+[Log4j](https://blog.csdn.net/u013870094/article/details/79518028)
 ===
->1、由Apache
