@@ -55,7 +55,7 @@
          int count = sqlSession.selectOne("a.b.findById");
          System.out.println(count)
 ```
->3、selectMap:返回值Map，适用于需求需要在查询结果中通过某列的值取到这行的需求,Map<Key,resultType控制>
+>3、selectMap:返回值Map，适用于需求需要在查询结果中通过某列的值取到这行的需求,Map<Key,resultType控制><br>
 ```
        Map<Object, Object> map = sqlSession.selectMap("a.b.c", "name");
         System.out.println(map);
@@ -64,22 +64,23 @@
 ===
 parameterType
 ==
-* 1、在XXMapper.xm;中<select><delect>等标签的parameterType可以控制参数类型
-* 2、SqlSessiond的selectList()和selectOne()的第二个参数和selectMap()的第三个参数都表示方法的参数
+* 1、在XXMapper.xm;中<select><delect>等标签的parameterType可以控制参数类型<br>
+* 2、SqlSessiond的selectList()和selectOne()的第二个参数和selectMap()的第三个参数都表示方法的参数<br>
 >
 ```
       int count = sqlSession.selectOne("a.b.findById",1);
            System.out.println(count);
 ```
-* >在Mapper.xml文件中可以通过#{}来获取参数：#{}使用索引，从0开始#{0}表示第一个参数，也可以使用#{param}的一个参数，如果只有一个参数（基本数据类型或String）mybatis对#{}里面内容要求只要写内容就行,如果参数是对象#{属性名}，如果参数是map写成#{map}
+* >在Mapper.xml文件中可以通过#{}来获取参数：#{}使用索引，从0开始#{0}表示第一个参数，也可以使用#{param}的一个参数，如果只有一个参数（基本数据类型或String）mybatis对#{}里面内容要求只要写内容就行,如果参数是对象#{属性名}，如果参数是map写成#{map}<br>
 ```
 <select id="findById" resultType="com.liyan.pojo.People" parameterType="int">
         select * from people where id = #{id}
     </select>
 ```
 * 3、#{}和$()区别
-* >1、#{}获取参数的内容支持，索引获取param获取指定位置参数并且sql使用?占位符
-* >2、${}字符串拼接不使用?,默认找${内容}内容的get/set方法,如果写数字就是指数字的值
+* >1、#{}获取参数的内容支持，索引获取param获取指定位置参数并且sql使用?占位符<br>
+* >2、${}字符串拼接不使用?,默认找${内容}内容的get/set方法,如果写数字就是指数字的值<br>
+
 
 Mybatis分页
 ==
