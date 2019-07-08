@@ -12,4 +12,11 @@
         select * from people
     </select>
 
+    <select id="findById" resultType="com.liyan.pojo.People" parameterType="int">
+        select * from people where id = #{id}
+    </select>
+
+    <select id="findpage" resultType="com.liyan.pojo.People" parameterType="map">
+        select * from people limit #{pageStart},#{pageSize}
+    </select>
 </mapper>

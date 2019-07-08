@@ -9,7 +9,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -60,5 +62,30 @@ public class FlowerTest {
         for (People people:list){
             System.out.println(people.toString());
         }
+
+    }
+
+    @Test
+    public void page(){
+        //显示几个数据
+        int pageSize=2;
+        //第几页
+        int pageNumber=2;
+        Map<String,Object> map=new HashMap<>();
+
+        map.put("pageSize",pageSize);
+        map.put("pageStart",pageSize*(pageNumber-1));
+        InputStream config = null;
+        try {
+            config = Resources.getResourceAsStream("mybatis.xml");
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(config);
+            SqlSession sqlSession = factory.openSession();
+           List<People> p=sqlSession.selectList("mapper.PeopleMapper.findpage",map);
+            System.out.println(p);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

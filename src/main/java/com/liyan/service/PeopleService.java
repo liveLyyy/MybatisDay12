@@ -7,4 +7,5 @@ import java.util.List;
 public interface PeopleService {
 
     List<People> findAll() throws Exception;
+
 }
