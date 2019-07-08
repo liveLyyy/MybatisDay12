@@ -63,7 +63,7 @@
 [Log4j](https://blog.csdn.net/u013870094/article/details/79518028)
 ===
 parameterType
-==
+===
 * >1、在XXMapper.xm;中<select><delect>等标签的parameterType可以控制参数类型<br>
 * >2、SqlSessiond的selectList()和selectOne()的第二个参数和selectMap()的第三个参数都表示方法的参数<br>
 >
@@ -83,7 +83,7 @@ parameterType
 
 
 Mybatis分页
-==
+===
 >1、？不允许在关键字前后进行数学运算，需要要代码中进行<br>
 ```
         //显示几个数据
