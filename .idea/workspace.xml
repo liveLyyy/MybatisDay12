@@ -467,9 +467,9 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.FlowerTest.findPeopleAll" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.21" />
       <item itemvalue="JUnit.FlowerTest.findById" />
       <item itemvalue="JUnit.FlowerTest.page" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.21" />
     </list>
     <recent_temporary>
       <list>
