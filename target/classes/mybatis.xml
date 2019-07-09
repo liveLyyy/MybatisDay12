@@ -2,6 +2,11 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    
+    <typeAliases>
+<!--        <typeAlias type="com.liyan.pojo.People" alias="peo"/>-->
+        <package name="com.liyan.pojo"/>
+    </typeAliases>
     <!--default引用environment的id，当前使用的环境-->
   <environments default="default">
       <!--声明可以使用的环境-->

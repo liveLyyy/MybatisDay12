@@ -1,19 +1,17 @@
 package com.liyan.service.Impl;
 
+import com.liyan.file.PageInfo;
 import com.liyan.pojo.People;
 import com.liyan.service.PeopleService;
-import org.apache.ibatis.builder.xml.XMLConfigBuilder;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.ibatis.session.defaults.DefaultSqlSessionFactory;
 
-import javax.annotation.Resource;
-import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 在数据访问层处理异常和在控制器中处理异常，service中只抛出异常
@@ -34,4 +32,24 @@ public class PeopleServiceImpl implements PeopleService {
         sqlSession.close();
         return list;
     }
+
+    @Override
+    public PageInfo findPage(int pagesize, int pagenumber) throws Exception {
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setPageNumber(pagenumber);
+        pageInfo.setPageSize(pagesize);
+        InputStream config = Resources.getResourceAsStream("mybatis.xml");
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(config);
+        SqlSession sqlSession = factory.openSession();
+        Map<String, Object> map = new HashMap<>();
+        map.put("pageStart", pagesize * (pagenumber - 1));
+        map.put("pageSize", pagesize);
+        pageInfo.setList(sqlSession.selectList("mapper.PeopleMapper.findpage", map));
+        //总条数
+        Long count = sqlSession.selectOne("mapper.PeopleMapper.findCount");
+        pageInfo.setTotal(count%pagesize==0?count/pagesize:count/pagesize+1);
+        return pageInfo;
+    }
+
+
 }

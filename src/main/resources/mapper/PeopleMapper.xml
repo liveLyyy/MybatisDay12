@@ -16,7 +16,17 @@
         select * from people where id = #{id}
     </select>
 
-    <select id="findpage" resultType="com.liyan.pojo.People" parameterType="map">
+    <select id="findpage" resultType="People" parameterType="map">
         select * from people limit #{pageStart},#{pageSize}
     </select>
+
+    <select id="findCount" resultType="long">
+        select count(*) from people
+    </select>
+    
+    <insert id="insertPeople" parameterType="People">
+        insert into people(name,age) values(#{name},#{age})
+    </insert>
+
+
 </mapper>

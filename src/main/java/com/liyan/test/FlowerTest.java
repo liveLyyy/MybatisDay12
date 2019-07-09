@@ -59,33 +59,49 @@ public class FlowerTest {
     public void findPeopleAll() throws Exception {
         PeopleServiceImpl peopleService = new PeopleServiceImpl();
         List<People> list = peopleService.findAll();
-        for (People people:list){
+        for (People people : list) {
             System.out.println(people.toString());
         }
 
     }
 
     @Test
-    public void page(){
+    public void page() {
         //显示几个数据
-        int pageSize=2;
+        int pageSize = 2;
         //第几页
-        int pageNumber=2;
-        Map<String,Object> map=new HashMap<>();
+        int pageNumber = 2;
+        Map<String, Object> map = new HashMap<>();
 
-        map.put("pageSize",pageSize);
-        map.put("pageStart",pageSize*(pageNumber-1));
+        map.put("pageSize", pageSize);
+        map.put("pageStart", pageSize * (pageNumber - 1));
         InputStream config = null;
         try {
             config = Resources.getResourceAsStream("mybatis.xml");
             SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(config);
             SqlSession sqlSession = factory.openSession();
-           List<People> p=sqlSession.selectList("mapper.PeopleMapper.findpage",map);
+            List<People> p = sqlSession.selectList("mapper.PeopleMapper.findpage", map);
             System.out.println(p);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-
+    @Test
+    public void Insert() throws Exception {
+        InputStream config = Resources.getResourceAsStream("mybatis.xml");
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(config);
+        SqlSession sqlSession = factory.openSession();
+        People p = new People();
+        p.setName("mlxg");
+        p.setAge(21);
+        int index = sqlSession.insert("mapper.PeopleMapper.insertPeople", p);
+        if (index > 0){
+            System.out.println("添加成功");
+        }else {
+            System.out.println("添加失败");
+        }
+        sqlSession.commit();
+        sqlSession.close();
     }
 }

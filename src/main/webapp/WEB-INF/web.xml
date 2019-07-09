@@ -20,4 +20,15 @@
     <url-pattern>/show</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <description></description>
+    <display-name>ShowPageServlet</display-name>
+    <servlet-name>ShowPageServlet</servlet-name>
+    <servlet-class>com.liyan.servlet.ShowPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowPageServlet</servlet-name>
+    <url-pattern>/pa</url-pattern>
+  </servlet-mapping>
+
 </web-app>
