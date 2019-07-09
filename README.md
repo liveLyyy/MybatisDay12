@@ -62,6 +62,7 @@
 ```
 [Log4j](https://blog.csdn.net/u013870094/article/details/79518028)
 ===
+<<<<<<< HEAD
 parameterType
 ===
 *   >1、在XXMapper.xm;中<select><delect>等标签的parameterType可以控制参数类型。 <br>
@@ -103,3 +104,4 @@ Mybatis分页
             e.printStackTrace();
         }
 ```
+
