@@ -81,27 +81,5 @@ parameterType
 *   >>1、#{}获取参数的内容支持，索引获取param获取指定位置参数并且sql使用?占位符。 <br>
 *   >>2、${}字符串拼接不使用?,默认找${内容}内容的get/set方法,如果写数字就是指数字的值。 <br>
 
-Mybatis分页
-===
->  1、？不允许在关键字前后进行数学运算，需要要代码中进行。 <br>
-```
-        //显示几个数据
-        int pageSize=2;
-        //第几页
-        int pageNumber=2;
-        Map<String,Object> map=new HashMap<>();
 
-        map.put("pageSize",pageSize);
-        map.put("pageStart",pageSize*(pageNumber-1));
-        InputStream config = null;
-        try {
-            config = Resources.getResourceAsStream("mybatis.xml");
-            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(config);
-            SqlSession sqlSession = factory.openSession();
-           List<People> p=sqlSession.selectList("mapper.PeopleMapper.findpage",map);
-            System.out.println(p);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-```
 
