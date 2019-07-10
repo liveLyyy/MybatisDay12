@@ -17,17 +17,17 @@ public class ShowPageServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            String pagesizestr = req.getParameter("pagesize");
-            String pagenumberstr = req.getParameter("pagenumber");
-            int pagesize = 2;
-            int pagenumber = 1;
-            if (pagesizestr != null && !pagesizestr.equals("")) {
-                pagesize = Integer.parseInt(req.getParameter(pagesizestr));
+            String pageSizestr = req.getParameter("pageSize");
+            String pageNumberstr = req.getParameter("pageNumber");
+            int pageSize = 2;
+            int pageNumber = 1;
+            if (pageSizestr != null && !pageSizestr.equals("")) {
+                pageSize = Integer.parseInt(pageSizestr);
             }
-            if (pagenumberstr != null && !pagenumberstr.equals("")) {
-                pagenumber = Integer.parseInt(req.getParameter(pagenumberstr));
+            if (pageNumberstr != null && !pageNumberstr.equals("")) {
+                pageNumber = Integer.parseInt(pageNumberstr);
             }
-            PageInfo pageInfo = peopleService.findPage(pagesize, pagenumber);
+            PageInfo pageInfo = peopleService.findPage(pageSize, pageNumber);
             req.setAttribute("pageInfo", pageInfo);
             req.getRequestDispatcher("showpage.jsp").forward(req, resp);
         } catch (Exception e) {

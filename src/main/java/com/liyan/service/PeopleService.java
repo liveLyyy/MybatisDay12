@@ -9,6 +9,6 @@ public interface PeopleService {
 
     List<People> findAll() throws Exception;
 
-    PageInfo findPage(int pagesize,int pagenumber) throws Exception;
+    PageInfo findPage(int pageSize,int pageNumber) throws Exception;
 
 }

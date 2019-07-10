@@ -34,20 +34,20 @@ public class PeopleServiceImpl implements PeopleService {
     }
 
     @Override
-    public PageInfo findPage(int pagesize, int pagenumber) throws Exception {
+    public PageInfo findPage(int pageSize, int pageNumber) throws Exception {
         PageInfo pageInfo = new PageInfo();
-        pageInfo.setPageNumber(pagenumber);
-        pageInfo.setPageSize(pagesize);
+        pageInfo.setPageNumber(pageNumber);
+        pageInfo.setPageSize(pageSize);
         InputStream config = Resources.getResourceAsStream("mybatis.xml");
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(config);
         SqlSession sqlSession = factory.openSession();
         Map<String, Object> map = new HashMap<>();
-        map.put("pageStart", pagesize * (pagenumber - 1));
-        map.put("pageSize", pagesize);
+        map.put("pageStart", pageSize * (pageNumber - 1));
+        map.put("pageSize", pageSize);
         pageInfo.setList(sqlSession.selectList("mapper.PeopleMapper.findpage", map));
         //总条数
         Long count = sqlSession.selectOne("mapper.PeopleMapper.findCount");
-        pageInfo.setTotal(count%pagesize==0?count/pagesize:count/pagesize+1);
+        pageInfo.setTotal(count%pageSize==0?count/pageSize:count/pageSize+1);
         return pageInfo;
     }
 

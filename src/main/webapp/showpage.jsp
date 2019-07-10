@@ -26,10 +26,12 @@
         </tr>
     </c:forEach>
 
+
 </table>
-<a href="pa?pageNumber=${pageInfo.pageNumber-1}&pageSize=${pageInfo.pageSize}"   <c:if
-        test="${pageInfo.pageNumber<=1}"> onclick="javascript:return false;"</c:if>>上一页</a>
-<a href="pa?pageNumber=${pageInfo.pageNumber+1}&pageSize=${pageInfo.pageSize}"  <c:if
-        test="${pageInfo.pageNumber>=pageInfo.total}"> onclick="javascript:return false;" </c:if>>下一页</a>
+<a href="page?pageNumber=${pageInfo.pageNumber-1}&pageSize=${pageInfo.pageSize}"
+   <c:if
+           test="${pageInfo.pageNumber<=1}">onclick="javascript:return false;" </c:if>  >上一页</a>
+<a href="page?pageNumber=${pageInfo.pageNumber+1}&pageSize=${pageInfo.pageSize}" <c:if
+        test="${pageInfo.pageNumber>=pageInfo.total}">onclick="javascript:return false;" </c:if>>下一页</a>
 </body>
 </html>

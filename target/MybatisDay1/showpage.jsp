@@ -13,12 +13,12 @@
 </head>
 <body>
 <table border="1">
- <tr>
-     <th>编号</th>
-     <th>姓名</th>
-     <th>年龄</th>
- </tr>
-    <c:forEach var="page" items="${pageInfo.list}" >
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+    </tr>
+    <c:forEach var="page" items="${pageInfo.list}">
         <tr>
             <td>${page.id}</td>
             <td>${page.name}</td>
@@ -26,8 +26,12 @@
         </tr>
     </c:forEach>
 
+
 </table>
-<a href="pa?pageNumber=${pageInfo.pageNumber-1}&pageSize=${pageInfo.pageSize}"   <c:if test="${pageInfo.pageNumber<=1}"> onclick="javascript:return false;" </c:if>>上一页</a>
-<a href="pa?pageNumber=${pageInfo.pageNumber+1}&pageSize=${pageInfo.pageSize}"  <c:if test="${pageInfo.pageNumber>=pageInfo.total}"> onclick="javascript:return false;" </c:if>>下一页</a>
+<a href="page?pageNumber=${pageInfo.pageNumber-1}&pageSize=${pageInfo.pageSize}"
+   <c:if
+           test="${pageInfo.pageNumber<=1}">onclick="javascript:return false;" </c:if>  >上一页</a>
+<a href="page?pageNumber=${pageInfo.pageNumber+1}&pageSize=${pageInfo.pageSize}" <c:if
+        test="${pageInfo.pageNumber>=pageInfo.total}">onclick="javascript:return false;" </c:if>>下一页</a>
 </body>
 </html>
